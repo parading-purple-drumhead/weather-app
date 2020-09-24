@@ -3,18 +3,18 @@
 }
 
 body {
-    background: url(images/night.jpg) transparent;
+    background: url(images/warm.jpg) transparent;
     background-position: top;
     background-size: cover;
     min-height: 750px;
 }
 
 .btn-floating.btn-small{
-    background-color: rgba(66, 66, 66, 0.4);
+    background-color: rgba(66, 66, 66, 0.6);
     font-size: 1.5rem;
     font-weight: 700;
 }
 
 .btn-floating.btn-small:hover{
-    background-color: rgba(240, 240, 240, 0.4);
+    background-color: rgba(240, 240, 240, 0.6);
 }
