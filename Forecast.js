@@ -1,4 +1,4 @@
-const key=	'g21mv7p9IyBzU1mITzz7sGWhTggsAkDm';
+const key=	'yCRof3ZH9FErWo8wMlABwT5Pps2npuML';
 
 //get forecast
 const getForecast = async(id)=>{

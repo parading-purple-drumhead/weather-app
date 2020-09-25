@@ -30,10 +30,7 @@
 
     <div class="container body-container">
         <div class="row" style="margin-top: 6rem;">
-
-
-
-            <div class="col s3" id="city-container">
+            <div class="col s12 m3" id="city-container">
                 <!-- City Modal -->
                 <div id="city-modal" class="modal" style="width: 30%;">
                     <div class="modal-content center">
@@ -48,25 +45,29 @@
                     </div>
                 </div>
                 <div class="card" style="background-color: rgba(66, 66, 66, 0.6);">
-                    <span class="grey-text text-lighten-4" style="font-size: 4rem;">{{cityname}}
-                        <a class="btn btn-floating btn-small modal-trigger z-depth-0" href="#city-modal">
-                            <i class="material-icons">create</i>
-                        </a>
-                    </span>
+                    <div class="row">
+                        <div class="col s12">
+                            <span class="grey-text text-lighten-4" style="font-size: 2rem;">{{cityname}}
+                                <a class="btn btn-floating btn-small modal-trigger z-depth-0" href="#city-modal">
+                                    <i class="material-icons">create</i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
 
                     <span class="grey-text text-lighten-4" style="font-size: 1.5rem;">{{date}}</span>
                 </div>
             </div>
 
 
-            <div class="col s9" id  ="weatherInfo">
+            <div class="col s12 m9" id="weatherInfo">
                 <div class="row" style=" width: 100%;display: flex;">
-                    <div class="col s1" style="flex: 1;padding-right: 0.5rem;">
-                        <button id="prev-slide" class="btn-floating btn-small waves-effect waves-light"
-                            style="top: 50%">
+                    <div class="col m1 hide-on-small-only" style="flex: 1;padding-right: 0.5rem;">
+                        <button id="prev-slide" class="btn-floating btn-small waves-effect waves-light" style="top: 50%"
+                            v-on:click="prevSlide()">
                             < </button>
                     </div>
-                    <div class="carousel carousel-slider col s10" style="height: 25rem !important;">
+                    <div class="carousel carousel-slider col s12 m10" style="height: 25rem !important;">
                         <div class="carousel-item white-text" href="#one!"
                             style="background-color: rgba(66, 66, 66, 0.6);">
                             <div class="row" style="margin-top: 1.5rem;">
@@ -79,30 +80,32 @@
                                 <div class="col s6 row" style="margin-top: 1rem;">
                                     <div class="col s3 offset-s2">
                                         <!-- <i class="material-icons right" style="font-size: 5rem;"></i> -->
-                                        
+
                                         <!-- <img src="images/rainy.jpg" class="responsive-img carousel-item" alt="Image"> -->
-                                        
+
                                     </div>
                                     <div class="col s7 temp" style="margin-top: -1.2rem;">
-                                        <span style="font-size: 5rem;">{{temp}}&deg;C</span>
+                                        <span style="font-size: 5rem;">{{temp}}&deg;C</span><br>
                                     </div>
                                     <div class="col s2 offset-s2" style="text-align:right;padding-right: 1.2rem;">
-                                        <span style="font-size: 1.25rem;">{{weather}}</span>
+                                        
+                                        <!-- <span style="font-size: 1.25rem;">{{weather}}</span> -->
                                     </div>
                                     <div class="col s6" style="text-align: center;padding-left: 2.5rem;">
-                                        <span style="font-size: 1.25rem;">Feels like {{feels}}&deg;C</span>
+                                        <!-- <span style="font-size: 1.25rem;">Feels like {{feels}}&deg;C</span> -->
+                                        <span style="font-size: 1.25rem;">Feels like {{feels}}&deg;C</span><br>
+                                        <span style="font-size: 1.25rem;">{{weather}}</span>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row" style="margin-top: 2rem;"  >
+                            <div class="row" style="margin-top: 2rem;">
                                 <div class="col s2 center" v-for="forecast in temparray">
                                     <span style="font-size: 1.5rem;">{{forecast.temp}}&deg;C</span><br><br>
                                     <!-- <span style="font-size: 1.25rem;">cloudy</span><br> -->
-                                    <!-- <i class="material-icons"
-                                        style="margin-top: 0.5rem;margin-bottom: 0.5rem; font-size: 2rem;">account_circle</i><br> -->
+                                    <!-- <i src="./images/icons/1.ico" style="margin-top: 0.5rem;margin-bottom: 0.5rem; font-size: 2rem;"></i><br> -->
                                     <span style="font-size: 1.25rem;">{{forecast.datetime}}</span>
                                 </div>
-                                
+
                             </div>
                         </div>
                         <div class="carousel-item white-text" href="#two!"
@@ -115,9 +118,9 @@
                             <p class="white-text">This is your third panel</p>
                         </div>
                     </div>
-                    <div class="col s1" style="flex: 1;">
-                        <button id="next-slide" class="btn-floating btn-small waves-effect waves-light"
-                            style="top: 50%">></button>
+                    <div class="col m1 hide-on-small-only" style="flex: 1;">
+                        <button id="next-slide" class="btn-floating btn-small waves-effect waves-light" style="top: 50%"
+                            v-on:click="nextSlide()">></button>
                     </div>
                 </div>
 
