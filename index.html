@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!-- Compiled and minified JavaScript -->
     <link rel="stylesheet" href="index.css">
-
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
@@ -19,9 +18,9 @@
         <nav class="nav-wrapper transparent z-depth-0">
             <div class="container">
                 <a href="#" class="brand-logo">Weather Info</a>
-                <a href="#" class="sidenav-trigger" data-target="mobile-links">
+                <!-- <a href="#" class="sidenav-trigger" data-target="mobile-links">
                     <i class="material-icons">menu</i>
-                </a>
+                </a> -->
             </div>
         </nav>
     </header>
@@ -32,7 +31,7 @@
         <div class="row" style="margin-top: 6rem;">
             <div class="col s12 m3" id="city-container">
                 <!-- City Modal -->
-                <div id="city-modal" class="modal" style="width: 30%;">
+                <div id="city-modal" class="modal s12" style="width: 30%;">
                     <div class="modal-content center">
                         <div class="row">
                             <div class="input-field col s8 offset-s2">
@@ -88,7 +87,7 @@
                                         <span style="font-size: 5rem;">{{temp}}&deg;C</span><br>
                                     </div>
                                     <div class="col s2 offset-s2" style="text-align:right;padding-right: 1.2rem;">
-                                        
+
                                         <!-- <span style="font-size: 1.25rem;">{{weather}}</span> -->
                                     </div>
                                     <div class="col s6" style="text-align: center;padding-left: 2.5rem;">
@@ -108,14 +107,39 @@
 
                             </div>
                         </div>
+
+                        <!-- This is the second panel -->
                         <div class="carousel-item white-text" href="#two!"
                             style="background-color: rgba(66, 66, 66, 0.6);">
-
+                            <div class="container">
+                                <h2 class="white-text center" style="font-size: 2rem; margin-top: 5rem;">Today's weather
+                                    in Mumbai</h2>
+                                <div class="row center-align" style="margin-top: 5rem;">
+                                    <div class="col l6 s12">
+                                        <span>Humidity</span><br>
+                                        <hr width="80%">
+                                        <span>Wind Index</span><br>
+                                        <hr width="80%">
+                                        <span>Visibility</span><br>
+                                    </div>
+                                    <div class="col l6 s12">
+                                        <span>Precipitation</span><br>
+                                        <hr width="80%">
+                                        <span>UV Index</span><br>
+                                        <hr width="80%">
+                                        <span>Pressure</span><br>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- This is the third panel -->
                         <div class="carousel-item white-text" href="#three!"
                             style="background-color: rgba(66, 66, 66, 0.6);">
-                            <h2>Third Panel</h2>
-                            <p class="white-text">This is your third panel</p>
+                            <div class="container">
+                                <h2 class="center-align">Today's precipitation in Mumbai</h2>
+                                <canvas id="precipitation" style="background-color: rgba(255,255,255,1);padding: 1rem;"></canvas>
+                            </div>
                         </div>
                     </div>
                     <div class="col m1 hide-on-small-only" style="flex: 1;">
@@ -129,6 +153,7 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
     <script src="Forecast.js"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>

@@ -13,6 +13,4 @@ Panel 2:
 -> Pressure
 
 Panel 3:
--> Mera sexy sa shakal
--> This is a change
--> Devanshi ka change
+-> Graph

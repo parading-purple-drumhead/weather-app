@@ -22,12 +22,12 @@ const cityContainer = new Vue({
             cityName.value = '';
         },
         calcDatetime(d) {
-            const year = d.slice(0,4);
-            const monthIndex = parseInt(d.slice(5,7));
-            var months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-            const month = months[monthIndex-1];
-            const day = d.slice(8,10);
-            const time = d.slice(11,16)
+            const year = d.slice(0, 4);
+            const monthIndex = parseInt(d.slice(5, 7));
+            var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const month = months[monthIndex - 1];
+            const day = d.slice(8, 10);
+            const time = d.slice(11, 16)
             this.date = time + ' ' + month + ' ' + day + ', ' + year;
         }
     },
@@ -125,3 +125,33 @@ const weatherInfo = new Vue({
 
 });
 
+
+var chart = document.getElementById('precipitation');
+var precChart = new Chart(chart, {
+    type: 'line',
+    data: {
+        labels: ['a', 'b', 'c', 'd', 'e', 'f'],
+        datasets: [{
+            label: '% of rain',
+            data: [34, 21, 25, 47, 43, 69],
+            backgroundColor: ['rgb(18, 184, 255)'],
+            borderColor: ['rgb(18, 184, 255)'],
+            borderWidth: 1,
+            fill: false,
+            lineTension: 0.1,
+            pointBackgroundColor: 'rgba(18, 184, 255,0.4)',
+            pointHoverBackgroundColor: 'rgba(18, 184, 255,1)',
+            pointRadius: 3,
+            pointHoverRadius: 5,
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+    }
+})
