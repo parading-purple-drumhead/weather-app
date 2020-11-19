@@ -16,10 +16,12 @@ const cityContainer = new Vue({
             const cityName = document.querySelector('#city-name');
             this.cityname = cityName.value.trim();
             console.log(this.cityname);
+            localStorage.setItem('cityName', this.cityname);
             weatherInfo.getweatherInfo(this.cityname);
             var modal = document.querySelector("#city-modal");
             M.Modal.getInstance(modal).close();
             cityName.value = '';
+            
         },
         calcDatetime(d) {
             const year = d.slice(0, 4);
@@ -32,6 +34,7 @@ const cityContainer = new Vue({
         }
     },
     mounted() {
+       
     }
 });
 
@@ -61,6 +64,13 @@ const weatherInfo = new Vue({
         Wicon: '',
         weather: '',
         feels: '',
+        humidity: '',
+        uv:'',
+        windSpeed:'',
+        visibility:'',
+        precipitation:'',
+        pressure:'',
+        cityname: '',
     },
     methods: {
         async getweatherInfo(city) {
@@ -89,9 +99,60 @@ const weatherInfo = new Vue({
                 i++;
                 if (i == 6) { return false; }
                 else { return true; }
+            
             });
+                      
             this.temparray = arrayname;
-            console.log(this.temparray);
+            console.log(this.temparray); 
+            var times=[];
+            var values=[];
+            forecasts.forEach(forecast =>{
+                var datetime = forecast.DateTime;
+                var time = datetime.slice(11, 16);
+                times.push(time)
+                var value= forecast.PrecipitationProbability
+                values.push(value)
+
+            });
+            console.log(values,times);
+            
+            var chart = document.getElementById('precipitation');
+            var precChart = new Chart(chart, {
+                type: 'line',
+                data: {
+                    labels: times,
+                    datasets: [{
+                        label: '% of rain',
+                        data: values,
+                        backgroundColor: ['rgb(18, 184, 255)'],
+                        borderColor: ['rgb(18, 184, 255)'],
+                        borderWidth: 1,
+                        fill: false,
+                        lineTension: 0.1,
+                        pointBackgroundColor: 'rgba(18, 184, 255,0.4)',
+                        pointHoverBackgroundColor: 'rgba(18, 184, 255,1)',
+                        pointRadius: 3,
+                        pointHoverRadius: 5,
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                }
+            })
+            this.humidity = Math.round(weather.RelativeHumidity);
+            this.uv = weather.UVIndexText;
+            this.windSpeed = weather.Wind.Speed.Metric.Value;
+            this.visibility = weather.Visibility.Metric.Value;
+            this.pressure = weather.Pressure.Metric.Value;
+            this.precipitation = weather.PrecipitationSummary.Precipitation.Metric.Value;
+            this.cityname = localStorage.getItem('cityName');
+
         },
         prevSlide() {
             var carousel = document.querySelector(".carousel")
@@ -115,7 +176,9 @@ const weatherInfo = new Vue({
             else {
                 document.body.style.backgroundImage = "url('images/rainy.jpg')"
             }
-        }
+        },
+        
+
     },
 
     mounted() {
@@ -126,32 +189,3 @@ const weatherInfo = new Vue({
 });
 
 
-var chart = document.getElementById('precipitation');
-var precChart = new Chart(chart, {
-    type: 'line',
-    data: {
-        labels: ['a', 'b', 'c', 'd', 'e', 'f'],
-        datasets: [{
-            label: '% of rain',
-            data: [34, 21, 25, 47, 43, 69],
-            backgroundColor: ['rgb(18, 184, 255)'],
-            borderColor: ['rgb(18, 184, 255)'],
-            borderWidth: 1,
-            fill: false,
-            lineTension: 0.1,
-            pointBackgroundColor: 'rgba(18, 184, 255,0.4)',
-            pointHoverBackgroundColor: 'rgba(18, 184, 255,1)',
-            pointRadius: 3,
-            pointHoverRadius: 5,
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        },
-    }
-})

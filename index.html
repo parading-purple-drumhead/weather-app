@@ -113,21 +113,21 @@
                             style="background-color: rgba(66, 66, 66, 0.6);">
                             <div class="container">
                                 <h2 class="white-text center" style="font-size: 2rem; margin-top: 5rem;">Today's weather
-                                    in Mumbai</h2>
+                                    in {{cityname}}</h2>
                                 <div class="row center-align" style="margin-top: 5rem;">
                                     <div class="col l6 s12">
-                                        <span>Humidity</span><br>
+                                        <span><b>Humidity:</b> {{humidity}}</span><br>
                                         <hr width="80%">
-                                        <span>Wind Index</span><br>
+                                        <span><b>Wind Speed:</b> {{windSpeed}} km/h </span><br>
                                         <hr width="80%">
-                                        <span>Visibility</span><br>
+                                        <span><b>Visibility:</b> {{visibility}}</span><br>
                                     </div>
                                     <div class="col l6 s12">
-                                        <span>Precipitation</span><br>
+                                        <span> <b>Precipitation:</b> {{precipitation}} mm</span><br>
                                         <hr width="80%">
-                                        <span>UV Index</span><br>
+                                        <span> <b>UV Index:</b> {{uv}}</span><br>
                                         <hr width="80%">
-                                        <span>Pressure</span><br>
+                                        <span><b>Pressure:</b> {{pressure}} mb</span><br>
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +137,7 @@
                         <div class="carousel-item white-text" href="#three!"
                             style="background-color: rgba(66, 66, 66, 0.6);">
                             <div class="container">
-                                <h2 class="center-align">Today's precipitation in Mumbai</h2>
+                                <h2 class="center-align">Today's precipitation in {{cityname}}</h2>
                                 <canvas id="precipitation" style="background-color: rgba(255,255,255,1);padding: 1rem;"></canvas>
                             </div>
                         </div>
